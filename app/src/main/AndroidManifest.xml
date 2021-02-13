@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hariselfian.erentharis">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ERental"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".PesananMasuk.Detail_PesananMasukActivity"></activity>
+        <activity android:name=".Barang.BarangActivity" />
+        <activity android:name=".Barang.Detail_BarangSewaActivity" />
+        <activity android:name=".DetailStore.DetailStoreActivity" />
+        <activity android:name=".Kategori.SearchActivity" />
+        <activity android:name=".Rating.RatingActivity" />
+        <activity android:name=".Notif.NotificationActivity" />
+        <activity android:name=".Pesanan.Detail_BookedActivity" />
+        <activity android:name=".Order.OrderActivity" />
+        <activity android:name=".Checkout.CheckoutActivity" />
+        <activity android:name=".Detail.DetailBarangActivity" />
+        <activity android:name=".Profil.EditProfilActivity" />
+        <activity android:name=".Kategori.IsiKategoriActivity" />
+        <activity android:name=".Profil.FormStoreActivity" />
+        <activity android:name=".Profil.PasangSewaActivity" />
+        <activity android:name=".Profil.ProfilActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+</manifest>
