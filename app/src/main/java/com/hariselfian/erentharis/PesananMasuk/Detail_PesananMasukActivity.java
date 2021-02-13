@@ -180,8 +180,8 @@ public class Detail_PesananMasukActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         Log.e("salah",""+error);
-                        Toast.makeText(getApplicationContext(), "Kesalahan update, Kode 2"
-                                ,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), "Kesalahan update, Kode 2"
+                         //       ,Toast.LENGTH_LONG).show();
                     }
                 });
     }

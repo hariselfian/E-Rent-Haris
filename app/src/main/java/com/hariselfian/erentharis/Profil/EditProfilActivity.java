@@ -151,7 +151,7 @@ ImageView back;
                     @Override
                     public void onError(ANError error) {
                         Log.e("salah",""+error);
-                        Toast.makeText(getApplicationContext(), "Kesalahan update, Kode 2"
+                        Toast.makeText(getApplicationContext(), "Kesalahan "
                                 ,Toast.LENGTH_LONG).show();
                     }
                 });
