@@ -109,7 +109,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_15sdp"
         android:background="@drawable/edbg"
-        android:hint="Alamat Pengiriman"
+        android:hint="Alamat Penyewa"
         android:inputType="text"
         android:paddingLeft="@dimen/_5sdp"
         android:paddingTop="@dimen/_5sdp"

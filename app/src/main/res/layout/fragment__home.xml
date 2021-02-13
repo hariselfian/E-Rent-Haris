@@ -50,6 +50,12 @@
                                 android:background="@drawable/edbg"
                                 android:id="@+id/searchBtn"
                                 android:paddingLeft="@dimen/_5sdp" >
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tap disini mencari sewaan di E-Rent Haris"
+                                    android:layout_centerInParent="true"/>
                                 <ImageView
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"

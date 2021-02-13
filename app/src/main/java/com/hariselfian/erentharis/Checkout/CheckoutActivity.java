@@ -140,7 +140,7 @@ public class CheckoutActivity extends AppCompatActivity {
         namaCheckout.setText(""+namaUser);
 
         alamatCheckout = findViewById(R.id.alamatCheckout);
-        alamatCheckout.setText(""+alamatUser);
+        alamatCheckout.setText(""+alamat_penyewa);
 
         totalCheckout = findViewById(R.id.totalCheckout);
         totalCheckout.setText(""+formatRupiah.format((double)total));

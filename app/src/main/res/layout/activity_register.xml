@@ -8,6 +8,17 @@
     android:padding="@dimen/_5sdp"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_130sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:padding="@dimen/_10sdp"
+        app:srcCompat="@drawable/logotransparant" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_centerInParent="true"
