@@ -19,10 +19,11 @@ import com.hariselfian.erentharis.Notif.NotificationActivity;
 import com.hariselfian.erentharis.Pesanan.Fragment_Pesanan;
 import com.hariselfian.erentharis.PesananMasuk.Fragment_PesananMasuk;
 import com.hariselfian.erentharis.Profil.Fragment_Profil;
+
 /**
  * Kode dibuat dengan cinta oleh Haris Elfian.
  */
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     TinyDB tinyDB;
     EditText btn_cari;
     TextView title;
@@ -46,36 +47,29 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-                getFragmentPage(new Fragment_Home());
+        getFragmentPage(new Fragment_Home());
         /*Inisialisasi BottomNavigationView beserta listenernya untuk
          *menangkap setiap kejadian saat salah satu menu item diklik
          */
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigationView);
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-          @Override
+            @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 Fragment fragment = null;
-
                 //Menantukan halaman Fragment yang akan tampil
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.home:
                         fragment = new Fragment_Home();
                         break;
-
                     case R.id.profil:
                         fragment = new Fragment_Profil();
                         break;
-
                     case R.id.pesanan:
                         fragment = new Fragment_Pesanan();
                         break;
-
                     case R.id.pesanan_masuk:
                         fragment = new Fragment_PesananMasuk();
                         break;
-
-
 
                     /*case R.id.notidications:
                         fragment = new Notification();
@@ -87,8 +81,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
     //Menampilkan halaman Fragment
-    private boolean getFragmentPage(Fragment fragment){
-        if (fragment != null){
+    private boolean getFragmentPage(Fragment fragment) {
+        if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.page, fragment)

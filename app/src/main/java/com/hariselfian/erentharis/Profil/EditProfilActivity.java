@@ -25,18 +25,20 @@ import com.hariselfian.erentharis.TinyDB;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 /**
  * Kode dibuat dengan cinta oleh Haris Elfian.
  */
 public class EditProfilActivity extends AppCompatActivity {
-EditText edt_namauser_register,edt_alamatuser_register,edt_emailuser_register,
-        edt_telpuser_register,edt_username_register,edt_pass_register;
-Button btn_edit;
-API api;
-TinyDB tinyDB;
-String id;
-TextView title;
-ImageView back;
+    EditText edt_namauser_register, edt_alamatuser_register, edt_emailuser_register,
+            edt_telpuser_register, edt_username_register, edt_pass_register;
+    Button btn_edit;
+    API api;
+    TinyDB tinyDB;
+    String id;
+    TextView title;
+    ImageView back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,31 +79,31 @@ ImageView back;
     }
 
 
-    public void getProfil(){
-        Log.e("salah",api.URL_USER+id);
-        AndroidNetworking.get(api.URL_USER+id)
+    public void getProfil() {
+        Log.e("salah", api.URL_USER + id);
+        AndroidNetworking.get(api.URL_USER + id)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try{
-                            Log.d("tampilmenu","response:"+response);
+                        try {
+                            Log.d("tampilmenu", "response:" + response);
                             JSONArray res = response.getJSONArray("res");
-                               JSONObject data = res.getJSONObject(0);
-                                       String nama_user = data.getString("nama_user");
-                                       String alamat_user = data.getString("alamat_user");
-                                       String email_user = data.getString("email_user");
-                                       String telp_user = data.getString("telp_user");
-                                       String username = data.getString("username");
-                                       String password = data.getString("password");
+                            JSONObject data = res.getJSONObject(0);
+                            String nama_user = data.getString("nama_user");
+                            String alamat_user = data.getString("alamat_user");
+                            String email_user = data.getString("email_user");
+                            String telp_user = data.getString("telp_user");
+                            String username = data.getString("username");
+                            String password = data.getString("password");
 
-                                       edt_namauser_register.setText(nama_user);
-                                       edt_alamatuser_register.setText(alamat_user);
-                                       edt_emailuser_register.setText(email_user);
-                                       edt_telpuser_register.setText(telp_user);
-                                       edt_username_register.setText(username);
-                                       edt_pass_register.setText(password);
+                            edt_namauser_register.setText(nama_user);
+                            edt_alamatuser_register.setText(alamat_user);
+                            edt_emailuser_register.setText(email_user);
+                            edt_telpuser_register.setText(telp_user);
+                            edt_username_register.setText(username);
+                            edt_pass_register.setText(password);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -110,14 +112,13 @@ ImageView back;
 
                     @Override
                     public void onError(ANError anError) {
-                        Log.e("tampil menu","response:"+anError);
+                        Log.e("tampil menu", "response:" + anError);
                     }
                 });
     }
 
 
-
-    public  void update(){
+    public void update() {
         AndroidNetworking.post(api.URL_UPDATE)
                 .addBodyParameter("id_user", id)
                 .addBodyParameter("nama_user", edt_namauser_register.getText().toString())
@@ -132,27 +133,22 @@ ImageView back;
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        // do anything with response
-
-                                Intent i = new Intent(EditProfilActivity.this,ProfilActivity.class);
-                                startActivity(i);
-                                tinyDB.putString("id_user",id);
-                                tinyDB.putString("keyNamaUser",edt_namauser_register.getText().toString());
-                                tinyDB.putString("keyAlamatUser",edt_alamatuser_register.getText().toString());
-                                tinyDB.putString("keyEmailUser",edt_emailuser_register.getText().toString());
-                                tinyDB.putString("keyTelpUser",edt_telpuser_register.getText().toString());
-
-                                Toast.makeText(getApplicationContext(), "Data berhasil di update..."
-                                        ,Toast.LENGTH_LONG).show();
-
-
-                            }
+                        Intent i = new Intent(EditProfilActivity.this, ProfilActivity.class);
+                        startActivity(i);
+                        tinyDB.putString("id_user", id);
+                        tinyDB.putString("keyNamaUser", edt_namauser_register.getText().toString());
+                        tinyDB.putString("keyAlamatUser", edt_alamatuser_register.getText().toString());
+                        tinyDB.putString("keyEmailUser", edt_emailuser_register.getText().toString());
+                        tinyDB.putString("keyTelpUser", edt_telpuser_register.getText().toString());
+                        Toast.makeText(getApplicationContext(), "Data berhasil di update..."
+                                , Toast.LENGTH_LONG).show();
+                    }
 
                     @Override
                     public void onError(ANError error) {
-                        Log.e("salah",""+error);
+                        Log.e("salah", "" + error);
                         Toast.makeText(getApplicationContext(), "Kesalahan "
-                                ,Toast.LENGTH_LONG).show();
+                                , Toast.LENGTH_LONG).show();
                     }
                 });
     }

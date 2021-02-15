@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import dmax.dialog.SpotsDialog;
+
 /**
  * Kode dibuat dengan cinta oleh Haris Elfian.
  */
@@ -57,12 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         api = new API();
         tinyDB = new TinyDB(this);
         AndroidNetworking.initialize(this);
-        alertDialog =new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mencoba Masuk ....").setCancelable(false).build();
+        alertDialog = new SpotsDialog.Builder().setContext(this).setMessage("Sedang Mencoba Masuk ....").setCancelable(false).build();
 
 
         edtpass = findViewById(R.id.edtpass);
         edtusername = findViewById(R.id.edtusername);
-        txt_register= findViewById(R.id.txt_register);
+        txt_register = findViewById(R.id.txt_register);
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
 //        if (tinyDB.getBoolean("keyLogin")){
 //            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
 //            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
 //        }
 
     }
+
     private void getLogin() {
         alertDialog.show();
         AndroidNetworking.post(api.URL_LOGIN)
@@ -105,8 +106,8 @@ public class LoginActivity extends AppCompatActivity {
                             alertDialog.hide();
                             int stat = response.getInt("status");
                             String message = response.getString("message");
-                            Log.d("sukses", "code"+response);
-                            if (stat == 1){
+                            Log.d("sukses", "code" + response);
+                            if (stat == 1) {
 
 
                                 JSONObject data = response.getJSONObject("data");
@@ -116,18 +117,18 @@ public class LoginActivity extends AppCompatActivity {
                                 String email = data.getString("email_user");
                                 String telp = data.getString("telp_user");
 
-                                tinyDB.putString("keyIdUser",id_user);
-                                tinyDB.putString("keyNamaUser",nama_user);
-                                tinyDB.putString("keyAlamatUser",alamat);
-                                tinyDB.putString("keyEmailUser",email);
-                                tinyDB.putString("keyTelpUser",telp);
+                                tinyDB.putString("keyIdUser", id_user);
+                                tinyDB.putString("keyNamaUser", nama_user);
+                                tinyDB.putString("keyAlamatUser", alamat);
+                                tinyDB.putString("keyEmailUser", email);
+                                tinyDB.putString("keyTelpUser", telp);
 
-                                tinyDB.putBoolean("keyLogin",true);
-                                tinyDB.putBoolean("keyStore",true);
-                                Log.e("salah",email);
+                                tinyDB.putBoolean("keyLogin", true);
+                                tinyDB.putBoolean("keyStore", true);
+                                Log.e("salah", email);
 
                                 Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -141,16 +142,16 @@ public class LoginActivity extends AppCompatActivity {
                                 String email = data.getString("email_user");
                                 String telp = data.getString("telp_user");
 
-                                tinyDB.putString("keyIdUser",id_user);
-                                tinyDB.putString("keyNamaUser",nama_user);
-                                tinyDB.putString("keyAlamatUser",alamat);
-                                tinyDB.putString("keyEmailUser",email);
-                                tinyDB.putString("keyTelpUser",telp);
-                                tinyDB.putBoolean("keyLogin",true);
-                                Log.e("salah",email);
+                                tinyDB.putString("keyIdUser", id_user);
+                                tinyDB.putString("keyNamaUser", nama_user);
+                                tinyDB.putString("keyAlamatUser", alamat);
+                                tinyDB.putString("keyEmailUser", email);
+                                tinyDB.putString("keyTelpUser", telp);
+                                tinyDB.putBoolean("keyLogin", true);
+                                Log.e("salah", email);
 
                                 Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -167,8 +168,8 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         alertDialog.hide();
-                        Log.d("eror", "code :"+anError);
-                        Toast.makeText(LoginActivity.this, ""+anError, Toast.LENGTH_SHORT).show();
+                        Log.d("eror", "code :" + anError);
+                        Toast.makeText(LoginActivity.this, "" + anError, Toast.LENGTH_SHORT).show();
                     }
                 });
     }

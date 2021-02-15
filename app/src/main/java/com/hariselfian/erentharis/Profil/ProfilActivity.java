@@ -49,7 +49,6 @@ public class ProfilActivity extends AppCompatActivity {
                 Intent i = new Intent(ProfilActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
-
             }
         });
 

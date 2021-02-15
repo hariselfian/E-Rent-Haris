@@ -42,21 +42,22 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+
 /**
  * Kode dibuat dengan cinta oleh Haris Elfian.
  */
 public class PasangSewaActivity extends AppCompatActivity {
-    EditText edt_namaBarang,edt_tarif,edt_stokBarang,edtdeskripsi,edt_input_gambar;
+    EditText edt_namaBarang, edt_tarif, edt_stokBarang, edtdeskripsi, edt_input_gambar;
     Button pasang_sewa;
     API api;
     TextView title;
     ImageView back;
     Spinner List;
-    String id_user,id_store;
+    String id_user, id_store;
     int a;
 
     TinyDB tinyDB;
-//    private String[] Item= new ArrayList;
+    //    private String[] Item= new ArrayList;
     ArrayList<String> dataKategori = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
@@ -106,7 +107,6 @@ public class PasangSewaActivity extends AppCompatActivity {
         tinyDB = new TinyDB(this);
         id_user = tinyDB.getString("keyIdUser");
 
-
         List = findViewById(R.id.spinner_Kategori);
         getDataKategori();
 
@@ -120,22 +120,22 @@ public class PasangSewaActivity extends AppCompatActivity {
         aksiPasangSewa();
     }
 
-    public void getDataKategori(){
+    public void getDataKategori() {
         AndroidNetworking.get(api.URL_Kategori)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try{
-                            Log.d("tampilmenu","response:"+response);
+                        try {
+                            Log.d("tampilmenu", "response:" + response);
                             JSONArray res = response.getJSONArray("res");
-                            for(int i =0; i <res.length();i++){
+                            for (int i = 0; i < res.length(); i++) {
                                 JSONObject data = res.getJSONObject(i);
                                 String nama = data.getString("nama_kategori");
                                 dataKategori.add(nama);
 
-                                       int id = data.getInt("id_kategori");
+                                int id = data.getInt("id_kategori");
 
 //                                        String gambar =api.URL_GAMBAR+data.getString("gambar_");
 
@@ -150,12 +150,12 @@ public class PasangSewaActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-                        Log.e("tampil menu","response:"+anError);
+                        Log.e("tampil menu", "response:" + anError);
                     }
                 });
     }
 
-    private void setDataSpinner (){
+    private void setDataSpinner() {
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, dataKategori);
 
@@ -167,7 +167,7 @@ public class PasangSewaActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView adapterView, View view, int i, long l) {
-                a  = (int) adapter.getItemId(i)+1;
+                a = (int) adapter.getItemId(i) + 1;
 //                Toast.makeText(getApplicationContext(), "Saya Memesan " + a, Toast.LENGTH_SHORT).show();
             }
 
@@ -178,7 +178,7 @@ public class PasangSewaActivity extends AppCompatActivity {
         });
     }
 
-    public void aksiPasangSewa(){
+    public void aksiPasangSewa() {
         pasang_sewa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,12 +188,11 @@ public class PasangSewaActivity extends AppCompatActivity {
                 String deskripsi = edtdeskripsi.getText().toString(); //mengambil Value etNim menjadi string
 //                String inputGambar = edt_input_gambar.getText().toString(); //mengambil Value etNim menjadi string
 
-
-                if (namaBarang.equals("")||tarifBarang.equals("")||stokBarang.equals("")||deskripsi.equals("")){
-                    Toast.makeText(getApplicationContext(),"Semua data harus diisi" , Toast.LENGTH_SHORT).show();
+                if (namaBarang.equals("") || tarifBarang.equals("") || stokBarang.equals("") || deskripsi.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Semua data harus diisi", Toast.LENGTH_SHORT).show();
                     //memunculkan toast saat form masih ada yang kosong
                 } else {
-                    tambahData(namaBarang,tarifBarang,stokBarang,deskripsi); //memanggil fungsi tambahData()
+                    tambahData(namaBarang, tarifBarang, stokBarang, deskripsi); //memanggil fungsi tambahData()
 
                     edt_namaBarang.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_tarif.setText(""); //mengosongkan form setelah data berhasil ditambahkan
@@ -268,16 +267,15 @@ public class PasangSewaActivity extends AppCompatActivity {
     }
 
 
-
-    public void tambahData(String namaBarang, String tarifBarang, String stokBarang, String deskripsi){
+    public void tambahData(String namaBarang, String tarifBarang, String stokBarang, String deskripsi) {
         //koneksi ke file create.php, jika menggunakan localhost gunakan ip sesuai dengan ip kamu
-        Log.e("salah",""+api.URL_BARANG);
+        Log.e("salah", "" + api.URL_BARANG);
         AndroidNetworking.post(api.URL_BARANG)
                 .addBodyParameter("id_barang", "")
                 .addBodyParameter("id_user", id_user)
                 .addBodyParameter("id_kategori", String.valueOf(a))
                 .addBodyParameter("nama_barang", namaBarang) //id bersifat Auto_Increment tidak perlu diisi/(diisi NULL) cek create.php
-                .addBodyParameter("tarif_barang",tarifBarang) //mengirimkan data nim_mahasiswa yang akan diisi dengan varibel nim
+                .addBodyParameter("tarif_barang", tarifBarang) //mengirimkan data nim_mahasiswa yang akan diisi dengan varibel nim
                 .addBodyParameter("stok", stokBarang) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
                 .addBodyParameter("deskripsi", deskripsi) //mengirimkan data nama_mahasiswa yang akan diisi dengan varibel nama
                 .addBodyParameter("gambar_barang", getStringImage(decoded)) //mengirimkan data kelas_mahasiswa yang akan diisi dengan varibel kelas
@@ -292,16 +290,17 @@ public class PasangSewaActivity extends AppCompatActivity {
                         startActivity(i);
 
                         Log.e(TAG, "onResponse: " + response);
-                        Toast.makeText(getApplicationContext(),"Data berhasil ditambahkan" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data berhasil ditambahkan", Toast.LENGTH_SHORT).show();
 
                         //memunculkan Toast saat data berhasil ditambahkan
 
                     }
+
                     @Override
                     public void onError(ANError error) {
                         //Handle Error
                         Log.e(TAG, "onError: Failed" + error);
-                        Toast.makeText(getApplicationContext(),"Data gagal ditambahkan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Data gagal ditambahkan", Toast.LENGTH_SHORT).show();
                         //memunculkan Toast saat data gagal ditambahkan
                     }
                 });

@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/quicksand_medium"
-            android:text="Temukan Barang Rental di Aplikasi E-Rental"
+            android:text="Temukan Barang Rental di Aplikasi E-Rent Haris"
             android:layout_marginBottom="@dimen/_20sdp"
             android:textStyle="bold" />
 

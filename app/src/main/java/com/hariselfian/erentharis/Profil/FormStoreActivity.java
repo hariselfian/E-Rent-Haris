@@ -186,19 +186,17 @@ ImageView placePhoto;
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String nama_store = edt_namaStore.getText().toString(); //mengambil Value etNim menjadi string
                 String alamat_store = edt_alamatStore.getText().toString(); //mengambil Value etNim menjadi string
                 String telp_Store = edt_telpStore.getText().toString(); //mengambil Value etNim menjadi string
                 String wa_store = edt_WAStore.getText().toString(); //mengambil Value etNim menjadi string
                 String ig_store = edt_IGStore.getText().toString(); //mengambil Value etNim menjadi string
 //                String gambar = edt_gambar.getText().toString(); //mengambil Value etNim menjadi string
-
-                if (nama_store.equals("")||alamat_store.equals("")||telp_Store.equals("")||wa_store.equals("")||ig_store.equals("")){
-                    Toast.makeText(getApplicationContext(),"Semua data harus diisi" , Toast.LENGTH_SHORT).show();
+                if (nama_store.equals("") || alamat_store.equals("") || telp_Store.equals("") || wa_store.equals("") || ig_store.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Semua data harus diisi", Toast.LENGTH_SHORT).show();
                     //memunculkan toast saat form masih ada yang kosong
                 } else {
-                    tambahData(nama_store,alamat_store,telp_Store,wa_store,ig_store); //memanggil fungsi tambahData()
+                    tambahData(nama_store, alamat_store, telp_Store, wa_store, ig_store); //memanggil fungsi tambahData()
 
                     edt_namaStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan
                     edt_alamatStore.setText(""); //mengosongkan form setelah data berhasil ditambahkan

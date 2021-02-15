@@ -29,6 +29,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Kode dibuat dengan cinta oleh Haris Elfian.
  */
@@ -58,7 +59,7 @@ public class DetailStoreActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         id_store = i.getStringExtra("id_store");
-        Log.e("id_store",id_store);
+        Log.e("id_store", id_store);
 
         binding.toolbar.ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,29 +70,30 @@ public class DetailStoreActivity extends AppCompatActivity {
 
         getDataStore();
     }
-    public void getDataStore(){
-        AndroidNetworking.get(api.URL_DETAIL_STORE+id_store)
+
+    public void getDataStore() {
+        AndroidNetworking.get(api.URL_DETAIL_STORE + id_store)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try{
-                            Log.d("tampil Store","response:"+response+id_store);
+                        try {
+                            Log.d("tampil Store", "response:" + response + id_store);
                             dataStore.clear();
                             binding.jmlSewa.setText(response.getString("sewa"));
                             JSONArray res = response.getJSONArray("res");
                             Gson gson = new Gson();
-                            for (int i=0; i<res.length(); i++){
+                            for (int i = 0; i < res.length(); i++) {
                                 JSONObject data = res.getJSONObject(i);
                                 binding.namaStore.setText(data.getString("nama_store"));
                                 binding.alamatStore.setText(data.getString("alamat_store"));
-                                Picasso.get().load(api.URL_GAMBAR_U+data.getString("gambar_store")).into(binding.fotoStore);
+                                Picasso.get().load(api.URL_GAMBAR_U + data.getString("gambar_store")).into(binding.fotoStore);
                                 Model_IsiKategori Isi = gson.fromJson(data + "", Model_IsiKategori.class);
                                 dataStore.add(Isi);
                                 binding.toolbar.tvToolbar.setText(data.getString("nama_store"));
                             }
-                            binding.jmlBarang.setText(dataStore.size()+"");
+                            binding.jmlBarang.setText(dataStore.size() + "");
                             Adapter_IsiKategori adapter = new Adapter_IsiKategori(dataStore);
                             recycler_detailStore.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
@@ -104,7 +106,7 @@ public class DetailStoreActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
 
-                        Log.e("tampil menu","response:"+anError);
+                        Log.e("tampil menu", "response:" + anError);
                     }
                 });
     }
