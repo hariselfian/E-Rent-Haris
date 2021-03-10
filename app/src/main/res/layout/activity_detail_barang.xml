@@ -71,7 +71,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/quicksand_medium"
-                                android:text="Tersedia 5" />
+                                android:text="Tersedia" />
 
                             <TextView
                                 android:id="@+id/txt_tarif"
