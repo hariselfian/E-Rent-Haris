@@ -5,7 +5,7 @@ package com.hariselfian.erentharis;
  */
 public class API {
 
-        private String HOST = "apirent.hariselfian.site/api/";
+        private String HOST = "https://apirent.hariselfian.site/api/";
 
     public String URL_LOGIN = HOST + "Login.php";
     public String URL_GET_SLIDER = HOST + "slider.php";
